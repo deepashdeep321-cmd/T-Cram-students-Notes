@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>T-Cram | Notes Sharing Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">T-Cram</div>
+    <div class="nav-links">
+      <a href="#subjects">Subjects</a>
+      <a href="#upload" class="btn-nav">Upload Notes</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">📚 For Students, By Students</div>
+    <h1 class="hero-title">Study smarter.<br/><span class="accent">Share notes.</span></h1>
+    <p class="hero-sub">T-Cram is your college's go-to platform for sharing and discovering subject-wise study materials — free, fast, and forever.</p>
+    <div class="hero-actions">
+      <a href="#subjects" class="btn-primary">Browse Notes</a>
+      <a href="#upload" class="btn-secondary">Upload Yours</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">120+</span><span class="stat-label">Notes Shared</span></div>
+      <div class="stat"><span class="stat-num">18</span><span class="stat-label">Subjects</span></div>
+      <div class="stat"><span class="stat-num">400+</span><span class="stat-label">Students</span></div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="search-section">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search by subject, topic, or unit..." oninput="filterNotes()"/>
+    </div>
+  </section>
+
+  <!-- SUBJECTS -->
+  <section class="subjects-section" id="subjects">
+    <h2 class="section-title">Browse by Subject</h2>
+    <div class="subject-tabs" id="subjectTabs">
+      <button class="tab active" onclick="filterBySubject('All', this)">All</button>
+      <button class="tab" onclick="filterBySubject('Data Structures', this)">Data Structures</button>
+      <button class="tab" onclick="filterBySubject('DBMS', this)">DBMS</button>
+      <button class="tab" onclick="filterBySubject('OS', this)">OS</button>
+      <button class="tab" onclick="filterBySubject('OOP', this)">OOP</button>
+      <button class="tab" onclick="filterBySubject('Machine Learning', this)">Machine Learning</button>
+      <button class="tab" onclick="filterBySubject('Networks', this)">Networks</button>
+    </div>
+
+    <div class="notes-grid" id="notesGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- UPLOAD -->
+  <section class="upload-section" id="upload">
+    <div class="upload-card">
+      <h2>Share Your Notes</h2>
+      <p>Help your fellow students by uploading your study materials.</p>
+      <form class="upload-form" onsubmit="handleUpload(event)">
+        <input type="text" id="uploaderName" placeholder="Your Name" required/>
+        <input type="text" id="noteTitle" placeholder="Note Title (e.g. Unit 3 - Trees)" required/>
+        <select id="noteSubject" required>
+          <option value="" disabled selected>Select Subject</option>
+          <option>Data Structures</option>
+          <option>DBMS</option>
+          <option>OS</option>
+          <option>OOP</option>
+          <option>Machine Learning</option>
+          <option>Networks</option>
+        </select>
+        <textarea id="noteDesc" placeholder="Short description of what's covered..." rows="3"></textarea>
+        <div class="file-drop" id="fileDrop">
+          <span>📎 Click or drag to attach file (PDF/DOC/IMG)</span>
+          <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.png,.jpg"/>
+        </div>
+        <button type="submit" class="btn-primary full">Upload Notes</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✅ Notes uploaded successfully!</div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">T-Cram</div>
+    <p>Built with ❤️ by CSE students at Takshashila University</p>
+    <p class="footer-sub">© 2025 T-Cram · All rights reserved</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
